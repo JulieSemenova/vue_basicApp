@@ -4,13 +4,14 @@ body {
 }
 
 #card,
-.filterCard {
+#filterCard {
+  width: 350px;
   border: 2px solid Gray;
   border-radius: 10px;
 }
 
 #card header,
-.filterCard header {
+#filterCard header {
   display: block;
   border-radius: 8px 8px 0 0;
   background: orange;
@@ -20,20 +21,20 @@ body {
 }
 
 #card div,
-.filterCard div,
-.filterCard p {
+#filterCard div,
+#filterCard p {
   padding: 1em;
 }
 
 #card ul,
-.filterCard ul {
+#filterCard ul {
   list-style: none;
   margin: 0;
   padding: 0 1em 1em;
 }
 
 #card ul li,
-.filterCard ul li {
+#filterCard ul li {
   padding: 0.25em;
   border: 1px solid gray;
   margin: 0.5em 0;
@@ -42,8 +43,4 @@ body {
 
 .separator {
   height: 40px;
-}
-
-.filterCard {
-  width: 350px;
 }

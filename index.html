@@ -12,21 +12,28 @@
   <div id="card">
     <header>{{ title }}</header>
     <div>
-      <input id="itemForm" v-on:keyup.enter="addItem">
+      <input id="itemForm" v-model="input">
       <button v-on:click="addItem">Add Dinosaur</button>
     </div>
 
     <ul>
       <li v-for="(item, index) in items">
-        <button v-on:click="deleteItem(index)">X</button>
+        <button v-on:click="item.quantity += 1">+</button> {{ item.quantity }}
+        <button v-on:click="item.quantity -= 1">-</button>
         {{ item.text }}
+        <button v-on:click="removeItem" class="extinct">Make Extinct</button>
       </li>
+    </ul>
+
+    <ul>
+      <li>Total Dinosaurs: {{ totalDinos }} </li>
+      <li>Total Species: {{ totalSpecies }} </li>
     </ul>
   </div>
 
   <div class="separator"></div>
 
-  <div class="filterCard" id="filterCard">
+  <div id="filterCard">
     <header>{{ title | capitalize }}</header>
 
     <ul>

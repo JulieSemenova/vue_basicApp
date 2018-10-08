@@ -2,21 +2,38 @@ var card = new Vue({
   el: '#card',
   data: {
     title: 'Dinosaurs',
-    items: [{ text: 'Velociraptor' }, { text: 'Triceratops' }, { text: 'Stegosaurus' }]
+    input: '',
+    items: [
+      { text: 'Velociraptor', quantity: 5 },
+      { text: 'Triceratops', quantity: 3 },
+      { text: 'Stegosaurus', quantity: 6 }
+    ]
+  },
+  computed: {
+    totalDinos: function() {
+      var sum = 0;
+      var items = this.items;
+
+      for (var i in items) {
+        sum += items[i].quantity;
+      }
+
+      return sum;
+    },
+    totalSpecies: function() {
+      return this.items.length;
+    }
   },
   methods: {
-    addItem: function() {
-      var input = document.getElementById('itemForm');
+    addItem: function(e) {
+      e.preventDefault();
+      if (!this.input) return;
 
-      if (input.value !== '') {
-        this.items.push({
-          text: input.value
-        });
-        input.value = '';
-      }
+      this.items.push({ text: this.input, quantity: 1 });
+      this.input = '';
     },
-    deleteItem: function(index) {
-      this.items.splice(index, 1);
+    removeItem: function(item) {
+      this.items.splice(item, 1);
     }
   }
 });
