@@ -3,6 +3,7 @@ var card = new Vue({
   data: {
     title: 'Dinosaurs',
     input: '',
+    buttonText: 'Add Dinosaur',
     items: [
       { text: 'Velociraptor', quantity: 5 },
       { text: 'Triceratops', quantity: 3 },
@@ -22,6 +23,9 @@ var card = new Vue({
     },
     totalSpecies: function() {
       return this.items.length;
+    },
+    buttonDisabled: function() {
+      return this.input == '';
     }
   },
   methods: {
@@ -35,6 +39,11 @@ var card = new Vue({
     removeItem: function(item) {
       this.items.splice(item, 1);
     }
+  },
+  watch: {
+    input: _.debounce(function() {
+      this.buttonText = this.input !== '' ? 'Add ' + this.input : 'Add Dinosaur';
+    }, 250)
   }
 });
 

@@ -22,7 +22,8 @@ body {
 
 #card div,
 #filterCard div,
-#filterCard p {
+#filterCard p,
+form {
   padding: 1em;
 }
 
